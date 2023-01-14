@@ -1,0 +1,32 @@
+<div class="row" style="margin-left: 30%;">
+    <p-toolbar class="p-toolbar-group mt-3 mb-3">
+        <button pButton type="button" class="p-button-danger p-button-raised" (click)="vaciar()" style="width: 150px; height: 50px;">Vaciar listado</button>
+        <button pButton type="button" class="p-button-primary p-button-raised" (click)="onChangeOrder('titulo')" style="width: 150px; height: 50px;">Ordenar por título</button>
+        <button pButton type="button" class="p-button-warning p-button-raised" (click)="onChangeOrder('descripcion')" style="width: 150px; height: 50px;">Ordenar por descripción</button>
+    </p-toolbar>
+    <hr />
+    <mat-card class="d-flex justify-content-center align-items-center" style="width: 70%;">
+        <p-table [value]="tareas | ordenar: ordenarPor">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha de creación</th>
+                    <th colspan="3">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-tarea let-rowIndex="rowIndex">
+                <tr [ngClass]="{'completada': tarea.completada}">
+                    <td>{{tarea.titulo}}</td>
+                    <td>{{tarea.descripcion}}</td>
+                    <td>Tarea creada el {{fechaActual | date : 'shortDate'}}, a las {{fechaActual | date :'shortTime'}}</td>
+                    <td><button mat-icon-button color="warn" (click)="eliminarTarea(rowIndex)" class="box"><i class="pi pi-times"></i></button></td>
+                    <td><button mat-icon-button color="primary" (click)="editarTarea(rowIndex)" class="box"><i class="pi pi-pencil"></i></button></td>
+                    <td><button mat-icon-button (click)="completado(rowIndex)" (click)="onChangeOrder('completada')" class="box"><i class="pi pi-check-circle"></i></button></td>
+                    <td><button mat-icon-button (click)="ponerEnMayus(rowIndex)" class="box"><mat-icon class="text-success">arrow_upward</mat-icon></button></td>
+                    <td><button mat-icon-button (click)="ponerEnMinus(rowIndex)" class="box"><mat-icon class="text-warning">arrow_downward</mat-icon></button></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </mat-card>
+</div>
