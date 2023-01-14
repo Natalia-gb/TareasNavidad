@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditTareaComponent } from './edit-tarea/edit-tarea.component';
 import { ListTareaComponent } from './list-tarea/list-tarea.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AddTareaComponent } from './add-tarea/add-tarea.component';
-import { DeleteTareaComponent } from './delete-tarea/delete-tarea.component';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
@@ -19,11 +17,9 @@ import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
-    EditTareaComponent,
     ListTareaComponent,
     MainPageComponent,
     AddTareaComponent,
-    DeleteTareaComponent,
     OrdenarPipe
   ],
   imports: [
